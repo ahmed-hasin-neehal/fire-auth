@@ -28,7 +28,6 @@ function App() {
         photo: photoURL
       }
       setUser(signedInUser);
-      console.log(displayName, email, photoURL);
     })
     .catch(err => {
       console.log(err);
@@ -53,6 +52,14 @@ function App() {
     })
   }
 
+  const handleSubmit = () => {
+
+  }
+
+  const handleBlur = (e) => { //e = event
+    console.log(e.target.name, e.target.value);
+  }
+
   return (
     <div className="App">
       {
@@ -66,6 +73,15 @@ function App() {
           <img src= {user.photo} alt=""/>
         </div>
       }
+
+      <h1>Our own Authentication</h1>
+      <form onSubmit={handleSubmit}>
+        <input type="text" onBlur={handleBlur} name="email" id="" placeholder="Email Address" required/>
+        <br/>
+        <input type="password" onBlur={handleBlur} name="password" id="" placeholder="Password" required/>
+        <br/>
+        <input type="submit" value="Submit"/>
+      </form>
     </div>
   );
 }
